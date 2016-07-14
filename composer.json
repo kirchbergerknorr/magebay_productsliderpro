@@ -1,0 +1,12 @@
+{
+    "name": "kirchbergerknorr/magebay_productsliderpro",
+    "description": "Magebay product slider module",
+    "type": "magento-module",
+    "authors": [
+        {
+            "name": "Leo Friedrichs",
+            "email": "lf@kirchbergerknorr.de"
+        }
+    ],
+    "require": {}
+}

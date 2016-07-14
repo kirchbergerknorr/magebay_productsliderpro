@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <mst translate="label" module="pslider">
+            <label>Magebay.com</label>
+            <sort_order>300</sort_order>
+        </mst>
+    </tabs>
+	<sections>
+		<pslider translate="label" module="pslider">
+			<label>Pslider Pro  - Settings</label>
+			<tab>mst</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>777</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+                <info>
+                    <frontend_model>pslider/system_config_info</frontend_model>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                </info>	
+				<setting translate="label">
+                    <label>Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+						
+						<enable translate='label'>
+                    		<label>Enable Pslider Pro: </label>
+                    		<frontend_type>select</frontend_type>
+                    		<sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                    	</enable>
+						<jquery translate='label'>
+                    		<label>Load jQuery </label>
+                    		<frontend_type>select</frontend_type>
+							<comment>Select No if the jQuery libraries already exist to remove jQuery conflicts. Select Yes to load jquery library from Product Slider Pro module.</comment>
+                    		<sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                    	</jquery>
+						<maxproduct translate='label'>
+                    		<label>Maximum # of products: </label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                    	</maxproduct>
+						<slideitems translate='label'>
+                    		<label>Slide Items: </label>
+                    		<frontend_type>text</frontend_type>
+                    		<comment>This variable allows you to set the maximum amount of items displayed at a time with the widest browser width</comment>
+                    		<sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                    	</slideitems>
+						<show_product_price translate='label'>
+                    		<label>Show Product Price: </label>
+                    		<frontend_type>select</frontend_type>
+                    		<sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                    	</show_product_price>
+						<show_product_addtocart translate='label'>
+                    		<label>Show Add To Cart: </label>
+                    		<frontend_type>select</frontend_type>
+                    		<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                    	</show_product_addtocart>
+						<show_product_reviews translate='label'>
+                    		<label>Show Product Reviews: </label>
+                    		<frontend_type>select</frontend_type>
+                    		<sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                    	</show_product_reviews>
+						<show_product_addtolink translate='label'>
+                    		<label>Show Product Add To Link: </label>
+                    		<frontend_type>select</frontend_type>
+                    		<sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+             			 </show_product_addtolink>
+						<slide_automatic translate='label'>
+		                  		<label>Animate slider automatically: </label>
+		                  		<frontend_type>select</frontend_type>
+		                  		<sort_order>8</sort_order>
+		                        <show_in_default>1</show_in_default>
+		                        <show_in_website>1</show_in_website>
+		                        <show_in_store>1</show_in_store>                        
+		                        <source_model>adminhtml/system_config_source_yesno</source_model>		                        
+		            	</slide_automatic>  
+		            	<autoplay>
+		            		<label>Auto Play</label>
+		                    <frontend_type>text</frontend_type>
+		                    <comment>Change to any integrer for example autoPlay : 5000 to play every 5 seconds. If you leave autoPlay is empty default speed will be 5 seconds.</comment>
+		                    <sort_order>9</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>  		
+		                    <depends><slide_automatic>1</slide_automatic></depends>
+		            	</autoplay>            								
+		              <slide_navigation>
+		                	<label>Navigation</label>
+		            		<frontend_type>select</frontend_type>
+		            		<comment>Display "next" and "prev" buttons.</comment>
+		            		<sort_order>12</sort_order>
+		                  	<show_in_default>1</show_in_default>
+		                  	<show_in_website>1</show_in_website>
+		                  	<show_in_store>1</show_in_store>                        
+		                 	 <source_model>adminhtml/system_config_source_yesno</source_model>                 
+		              </slide_navigation>                                      
+		              <slide_pagination>
+		                <label>Pagination</label>
+		            		<frontend_type>select</frontend_type>
+		            		<comment>Show pagination.</comment>
+		            		<sort_order>13</sort_order>
+		                  <show_in_default>1</show_in_default>
+		                  <show_in_website>1</show_in_website>
+		                  <show_in_store>1</show_in_store>                        
+		                  <source_model>adminhtml/system_config_source_yesno</source_model>                 		              			              	
+		              </slide_pagination>
+		              <slide_stophover>
+		                <label>Stop on Hover</label>
+		            		<frontend_type>select</frontend_type>
+		            		<comment>Stop autoplay on mouse hover</comment>
+		            		<sort_order>14</sort_order>
+		                  <show_in_default>1</show_in_default>
+		                  <show_in_website>1</show_in_website>
+		                  <show_in_store>1</show_in_store>                        
+		                  <source_model>adminhtml/system_config_source_yesno</source_model>                 		              			              			           	
+		              </slide_stophover>
+		              <slidespeed>
+                    		<label>Slide Speed: </label>
+                    		<frontend_type>text</frontend_type>
+                    		<comment>Slide speed in milliseconds</comment>
+                    		<sort_order>15</sort_order>
+		                  <show_in_default>1</show_in_default>
+		                  <show_in_website>1</show_in_website>
+		                  <show_in_store>1</show_in_store> 		              	
+		              </slidespeed>			              
+		              <itemscustom>
+                    		<label>Items Custom: </label>
+                    		<frontend_type>text</frontend_type>
+                    		<comment>This allow you to add custom variations of items depending from the width If this option is set, itemsDeskop, itemsDesktopSmall, itemsTablet, itemsMobile etc. are disabled For better preview, order the arrays by screen size, but it's not mandatory Don't forget to include the lowest available screen size, otherwise it will take the default one for screens lower than lowest available.
+Example:
+[[0, 1], [400, 2], [700, 4], [1000, 5], [1200, 6], [1600, 8]]
+For more information about structure of the internal arrays see itemsDesktop</comment>
+                    		<sort_order>16</sort_order>
+		                  <show_in_default>1</show_in_default>
+		                  <show_in_website>1</show_in_website>
+		                  <show_in_store>1</show_in_store> 		              	
+		              </itemscustom>		              
+                    </fields>
+                </setting>								
+			</groups>
+		</pslider>
+	</sections>
+</config>

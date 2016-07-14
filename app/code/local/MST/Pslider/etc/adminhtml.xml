@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+					<pslider module="pslider">
+						<title>Pslider Pro</title>
+						<sort_order>71</sort_order>
+						<children>
+							<items module="pslider">
+								<title>Manage Items</title>
+								<sort_order>0</sort_order>
+								<action>pslider/adminhtml_pslider</action>
+							</items>
+							<cats module="pslider">
+								<title>Manage Group</title>
+								<sort_order>1</sort_order>
+								<action>pslider/adminhtml_cats</action> 
+							</cats>
+							<setting module="pslider">
+								<title>Settings</title>
+								<sort_order>4</sort_order>
+								<action>adminhtml/system_config/edit/section/pslider</action>
+							</setting>
+						</children>
+					</pslider>
+                    <system>
+						<children>
+                            <config>
+                                <children>
+                                    <pslider>
+                                        <title>Product Slider Pro</title>
+                                    </pslider>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

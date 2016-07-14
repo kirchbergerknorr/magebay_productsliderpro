@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   PACKT
+ * @package    PACKT_Pslider
+ * @author     Nurul Ferdous <nurul.ferdous@gmail.com>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <MST_Pslider>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MST_Pslider>
+    </modules>
+</config> 

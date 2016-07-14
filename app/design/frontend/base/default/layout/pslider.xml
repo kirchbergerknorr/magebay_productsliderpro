@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+			<action method="addItem" ifconfig="pslider/setting/jquery"  ><type>skin_js</type><name>pslider/js/jquery-1.7.2.min.js</name></action>
+			<action method="addItem" ifconfig="pslider/setting/jquery"  ><type>skin_js</type><name>pslider/js/mst-jquery-noconflict.js</name></action>			
+			<action method="addItem" ifconfig="pslider/setting/enable"  ><type>skin_js</type><name>pslider/owl-carousel/owl.carousel.min.js</name></action>	
+			<action method="addItem" ifconfig="pslider/setting/enable"  ><type>skin_js</type><name>pslider/js/jquery.easytabs.min.js</name></action>			
+			<action method="addItem" ifconfig="pslider/setting/enable"  ><type>skin_js</type><name>pslider/js/jquery.hashchange.min.js</name></action>			
+			<action method="addCss" ifconfig="pslider/setting/enable"  ><stylesheet>pslider/css/pslider.css</stylesheet></action>			
+			<action method="addCss" ifconfig="pslider/setting/enable"  ><stylesheet>pslider/owl-carousel/owl.theme.css</stylesheet></action>			
+			<action method="addCss" ifconfig="pslider/setting/enable"  ><stylesheet>pslider/owl-carousel/owl.carousel.css</stylesheet></action>			
+			<action method="addCss" ifconfig="pslider/setting/enable"  ><stylesheet>pslider/owl-carousel/owl.transitions.css</stylesheet></action>			
+		</reference>
+		<reference name="before_body_end">			
+		</reference>		
+    </default>
+</layout> 

@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   PACKT
+ * @package    MST_Pslider
+ * @author     Nurul Ferdous <nurul.ferdous@gmail.com>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <MST_Pslider>
+            <version>0.1.0</version>
+        </MST_Pslider>
+    </modules>
+    <frontend>
+        <routers>
+            <pslider>
+                <use>standard</use>
+                <args>
+                    <module>MST_Pslider</module>
+                    <frontName>pslider</frontName>
+                </args>
+            </pslider>
+        </routers>
+        <layout>
+            <updates>
+                <pslider>
+                    <file>pslider.xml</file>
+                </pslider>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <pslider>
+                <use>admin</use>
+                <args>
+                    <module>MST_Pslider</module>
+                    <frontName>pslider</frontName>
+                </args>
+            </pslider>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <pslider module="pslider">
+                <title>Pslider Pro</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <items module="pslider">
+                        <title>Manage Items</title>
+                        <sort_order>0</sort_order>
+                        <action>pslider/adminhtml_pslider</action>
+                    </items>
+                </children>
+				<!-- editbyduc : add child menu -->
+				<children>
+                    <cats module="pslider">
+                        <title>Manage Group</title>
+                        <sort_order>1</sort_order>
+                        <action>pslider/adminhtml_cats</action> 
+                    </cats>
+                </children>
+				<children>
+					<setting module="pslider">
+						<title>Settings</title>
+						<sort_order>4</sort_order>
+						<action>adminhtml/system_config/edit/section/pslider</action>
+					</setting>
+				</children>
+                
+            </pslider>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <MST_Pslider>
+                            <title>Pslider Module</title>
+                            <sort_order>10</sort_order>
+                        </MST_Pslider>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <pslider>
+                    <file>pslider.xml</file>
+                </pslider>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <pslider>
+                <class>MST_Pslider_Model</class>
+                <resourceModel>pslider_mysql4</resourceModel>
+            </pslider>
+            <pslider_mysql4>
+                <class>MST_Pslider_Model_Mysql4</class>
+                <entities>
+                    <pslider>
+                        <table>pslider</table>
+                    </pslider>
+					<cats>
+                        <table>pslider_cats</table>
+                    </cats>
+                    
+                </entities>
+            </pslider_mysql4>
+        </models>
+        <resources>
+            <pslider_setup>
+                <setup>
+                    <module>MST_Pslider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </pslider_setup>
+            <pslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </pslider_write>
+            <pslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </pslider_read>
+        </resources>
+        <blocks>
+            <pslider>
+                <class>MST_Pslider_Block</class>
+            </pslider>
+        </blocks>
+        <helpers>
+            <pslider>
+                <class>MST_Pslider_Helper</class>
+            </pslider>
+        </helpers>
+    </global>
+	<default>
+        <pslider>
+            <setting>
+                <jquery>0</jquery>
+                <maxproduct>9</maxproduct>
+                <slideitems>6</slideitems>
+                <show_product_price>1</show_product_price>
+                <show_product_addtocart>1</show_product_addtocart>
+                <show_product_reviews>1</show_product_reviews>
+                <show_product_addtolink>1</show_product_addtolink>
+                <slide_automatic>1</slide_automatic>
+                <autoplay>5000</autoplay>
+                <slide_navigation>1</slide_navigation>
+                <slide_pagination>0</slide_pagination>
+                <slide_stophover>1</slide_stophover>
+                <slidespeed>200</slidespeed>
+            </setting>
+        </pslider>
+    </default>
+</config>

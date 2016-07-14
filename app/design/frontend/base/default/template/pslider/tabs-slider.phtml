@@ -1,0 +1,113 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$pslider_id = $this->getGroupId();
+$pslider = Mage::getModel('pslider/pslider')->getCollection();
+$pslider->getSelect()->where('cats_id = ?', $pslider_id)->where('status = ?', 1)->order('position asc');
+$slidewidth=165;
+?>
+<div id="pslider<?php echo $pslider_id; ?>" class="pslider tabslide" >	
+	<ul class="list-tab" >
+	<?php
+	$i = 0;
+	foreach ( $pslider as $mtab )  {
+		$i++;
+		 echo '<li><a href="#pslider'.$pslider_id.'-'.$i.'">'.$mtab->getTitle().'</a></li>';
+	}
+	?>
+	</ul>	
+	<?php
+	$i=0;
+	foreach ( $pslider as $mtab )  {		
+	$i++;
+	?>
+	<div id="pslider<?php echo $pslider_id; ?>-<?php echo $i; ?>" class="mst-content-tab" <?php echo Mage::getStoreConfig('pslider/setting/slide_controlNav')?'style="padding-bottom:40px;"':'' ?>  >
+<?php
+$categoryId = $mtab->getCategoryId();
+
+if ( $mtab->getTypeId() == 1 ) {  
+	$_productCollection = Mage::helper('pslider')->getTopSellers( $categoryId );
+} elseif( $mtab->getTypeId() == 2 ) {
+	$_productCollection = Mage::helper('pslider')->getTopRated( $categoryId );	
+} elseif( $mtab->getTypeId() == 3 ) {
+	$_productCollection = Mage::helper('pslider')->getMostViewed( $categoryId );
+} else { 
+	$_productCollection = Mage::helper('pslider')->getLatestProducts( $categoryId );
+}         
+
+$_collectionSize = $_productCollection->count();
+$_columnCount = 3;
+?>
+
+	<div id="owl<?php echo $pslider_id; ?>-<?php echo $i; ?>">
+  <?php 
+	foreach ($_productCollection as $_product) { 
+	?>	
+		<div class="item">
+			<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" ><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize( $slidewidth ); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+	<div class="product-des">		<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+		
+		<?php if ( Mage::getStoreConfig('pslider/setting/show_product_reviews') )  {  echo $this->getReviewsSummaryHtml($_product, 'short'); } ?>
+		<?php if ( Mage::getStoreConfig('pslider/setting/show_product_price') )  {  echo $this->getPriceHtml($_product, true); } ?>
+			</div>
+	<div class="actions">
+		<?php if ( Mage::getStoreConfig('pslider/setting/show_product_addtocart') )  { ?>
+		<?php if($_product->isSaleable()): ?>
+			<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+		<?php else: ?>
+			<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		<?php endif; ?>
+		<?php } ?>
+		<?php if ( Mage::getStoreConfig('pslider/setting/show_product_addtolink') )  { ?>
+		<ul class="add-to-links">
+			<?php if ($this->helper('wishlist')->isAllow()) : ?>
+				<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+			<?php endif; ?>
+			<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+				<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+			<?php endif; ?>
+		</ul>
+		<?php } ?>
+	</div>						
+		</div>	
+		<?php } ?>
+	</div>
+	</div>
+<script type="text/javascript">
+	jQuery(function($) {
+ $('#owl<?php echo $pslider_id; ?>-<?php echo $i; ?>').owlCarousel({
+<?php if(Mage::getStoreConfig('pslider/setting/slide_automatic') && Mage::getStoreConfig('pslider/setting/autoplay')){ ?> 
+autoPlay: <?php echo Mage::getStoreConfig('pslider/setting/autoplay') ?>, //Set AutoPlay to 3 seconds
+ <?php } ?>
+<?php if(Mage::getStoreConfig('pslider/setting/slideitems')){ ?>
+items:<?php echo Mage::getStoreConfig('pslider/setting/slideitems') ?>,
+<?php } ?>
+pagination:<?php echo Mage::getStoreConfig('pslider/setting/slide_pagination')?'true':'false' ?>,
+ navigation : <?php echo Mage::getStoreConfig('pslider/setting/slide_navigation')?'true':'false' ?>,
+ <?php if(Mage::getStoreConfig('pslider/setting/slide_stophover')){?>
+ stopOnHover:<?php echo Mage::getStoreConfig('pslider/setting/slide_stophover') ?>,
+ <?php } ?>
+ <?php if(Mage::getStoreConfig('pslider/setting/slidespeed')){ ?>
+ slideSpeed:<?php echo Mage::getStoreConfig('pslider/setting/slidespeed') ?>,
+ <?php } ?>
+itemsDesktop : [1199,4],
+<?php if(Mage::getStoreConfig('pslider/setting/itemscustom')) { ?>
+itemsCustom:<?php echo Mage::getStoreConfig('pslider/setting/itemscustom') ?>,
+<?php } else { ?>
+itemsCustom: [[0, 2], [400, 3], [700, 4], [1000, 5], [1200, 6], [1600, 8]],
+<?php } ?>
+itemsDesktopSmall : [979,3]
+ 
+});	
+	});
+</script>	
+	<?php	
+	}
+	?>
+  <script type="text/javascript">
+    jQuery(document).ready( function($) {
+      $("#pslider<?php echo $pslider_id; ?>").easytabs();
+    });
+  </script>	
+</div>
+
+<div class="clear" ></div>
